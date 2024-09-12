@@ -1,0 +1,22 @@
+<form [formGroup]="mathForm">
+  <div class="editor">
+    <h3>Editor</h3>
+    <!-- Bind the textarea to the reactive form control 'editorContent' -->
+    <textarea formControlName="editorContent" rows="6" cols="50" placeholder="Type your math expression here..."></textarea>
+  </div>
+
+  <div class="buttons">
+    <h3>Insert Math Symbols</h3>
+    <!-- Buttons to insert MathJax symbols -->
+    <button type="button" (click)="insertSymbol(' \\frac{a}{b} ')">Insert Fraction</button>
+    <button type="button" (click)="insertSymbol(' \\sqrt{x} ')">Insert Square Root</button>
+    <button type="button" (click)="insertSymbol(' \\int_{a}^{b} f(x)dx ')">Insert Integral</button>
+    <button type="button" (click)="insertSymbol(' \\sum_{n=1}^{\\infty} ')">Insert Sum</button>
+  </div>
+</form>
+
+<div class="preview">
+  <h3>Rendered Output:</h3>
+  <!-- The MathJax-rendered content -->
+  <div id="output" [appMathJax]="renderedContent"></div>
+</div>
