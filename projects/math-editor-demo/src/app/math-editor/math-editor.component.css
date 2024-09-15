@@ -1,21 +1,31 @@
-.editor, .buttons {
-  margin-bottom: 20px;
+.editor-container {
+  /* Remove width property */
+  /* width: 960px; */
+  height: 400px; /* Adjust as needed */
+  background-color: #fff;
 }
 
-textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+/* Remove extra margins or padding from rows and columns if needed */
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
-.buttons button {
-  margin-right: 10px;
-  padding: 5px 10px;
-  font-size: 14px;
+.col-12 {
+  padding-left: 0;
+  padding-right: 0;
 }
 
+/* Adjust the preview area */
 .preview {
-  border: 1px solid #ddd;
-  padding: 20px;
-  background-color: #f9f9f9;
+  height: 300px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust the spacing */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+/* Editor styles */
+.editor {
+  height: 220px; /* Adjust as needed */
+  resize: none;
 }

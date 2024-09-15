@@ -1,22 +1,44 @@
-<form [formGroup]="mathForm">
-  <div class="editor">
-    <h3>Editor</h3>
-    <!-- Bind the textarea to the reactive form control 'editorContent' -->
-    <textarea formControlName="editorContent" rows="6" cols="50" placeholder="Type your math expression here..."></textarea>
+<!-- Preview Area -->
+<div class="container mt-3">
+  <!-- Header -->
+  <div class="row">
+    <div class="col-12">
+      <h3>Rendered Output:</h3>
+    </div>
   </div>
 
-  <div class="buttons">
-    <h3>Insert Math Symbols</h3>
-    <!-- Buttons to insert MathJax symbols -->
-    <button type="button" (click)="insertSymbol(' \\frac{a}{b} ')">Insert Fraction</button>
-    <button type="button" (click)="insertSymbol(' \\sqrt{x} ')">Insert Square Root</button>
-    <button type="button" (click)="insertSymbol(' \\int_{a}^{b} f(x)dx ')">Insert Integral</button>
-    <button type="button" (click)="insertSymbol(' \\sum_{n=1}^{\\infty} ')">Insert Sum</button>
+  <!-- Preview -->
+  <div class="row">
+    <div class="col-12">
+      <div class="preview">
+        <div #output id="output" [appMathJax]="renderedContent" class="p-3"></div>
+      </div>
+    </div>
   </div>
-</form>
+</div>
 
-<div class="preview">
-  <h3>Rendered Output:</h3>
-  <!-- The MathJax-rendered content -->
-  <div id="output" [appMathJax]="renderedContent"></div>
+<!-- Editor Area -->
+<div class="container editor-container">
+  <!-- Math Symbol Tabs -->
+  <div class="row">
+    <div class="col-12">
+      <app-math-symbols (symbolInserted)="insertSymbol($event)"></app-math-symbols>
+    </div>
+  </div>
+
+  <!-- Math Editor Form -->
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="mathForm">
+        <div class="mb-3">
+          <textarea
+            #editor
+            formControlName="editorContent"
+            class="form-control editor"
+            placeholder="Type your math expression here..."
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
